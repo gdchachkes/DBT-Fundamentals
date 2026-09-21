@@ -24,7 +24,7 @@ customer_orders as (
 customer_payments as (
     select 
         orders.customer_id,
-        sum (case when payments.payment_status = 'success' then payments.payment_amount end) as lifetime_value
+        sum (case when payments.status = 'success' then payments.amount end) as lifetime_value
     from 
         orders
         left join payments using(order_id)
